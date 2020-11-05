@@ -5,3 +5,13 @@
   roles:
     - role: geerlingguy.git
     - role: geerlingguy.gogs
+
+- name: setup firewall rule for gogs
+  hosts: node1
+  become: yes
+  tasks:
+    - name: Open firewall for port 3000
+      ansible.posix.firewalld:
+        port: 3000/tcp
+        permanent: yes
+        state: enabled
