@@ -1,7 +1,10 @@
 --- 
 - name: setup gogs host
-  hosts: node1 
+  hosts: tower 
   become: yes
   roles:
     - role: geerlingguy.git
     - role: geerlingguy.gitlab
+      vars:
+        gitlab_domain: gitlab
+        gitlab_external_url: "https://{{ gitlab_domain }}:8443/"
