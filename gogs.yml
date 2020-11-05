@@ -2,6 +2,8 @@
 - name: setup gogs host
   hosts: node1 
   become: yes
+  vars:
+    gogs_http_port: "8080"
   roles:
     - role: geerlingguy.git
     - role: geerlingguy.gogs
