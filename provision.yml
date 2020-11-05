@@ -1,0 +1,8 @@
+---
+- name: Provision instance to deploy app
+  hosts: localhost
+  tasks:
+    - name: Setup network
+    - name: setup load balancing?
+    - name: Request IP Address
+    - name: Request instance(s)
