@@ -1,0 +1,6 @@
+--- 
+- name: setup gogs host
+  host: node1 
+  roles:
+    - role: geerlingguy.git
+    - role: geerlingguy.gogs
