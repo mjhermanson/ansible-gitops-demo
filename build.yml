@@ -1,0 +1,8 @@
+--- 
+- name: Build simple Go App
+  hosts: build
+  tasks:
+    - name: Ensure Go is installed
+    - name: checkout code
+    - name: build executable
+    - name: push executable to repo??

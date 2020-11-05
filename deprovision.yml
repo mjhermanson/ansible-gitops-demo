@@ -1,0 +1,7 @@
+--- 
+- name: Deprovision instance
+  hosts: localhost
+  tasks:
+    - name: remove aws instance
+    - name: remove aws ip address
+    - name: remove aws network

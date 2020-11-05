@@ -1,0 +1,6 @@
+---
+- name: Deploy application
+  hosts: server
+  tasks:
+    - name: Copy executable to /usr/local/bin and make executable
+    - name: start the app

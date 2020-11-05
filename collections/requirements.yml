@@ -1,3 +1,5 @@
 ---
 collections:
   - ansible.posix 
+  - google.cloud
+  - amazon.aws
