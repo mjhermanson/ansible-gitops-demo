@@ -14,8 +14,8 @@
       block:
         - name: Get Instances facts
           amazon.aws.ec2_instance_facts:
-            aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
-            aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+            aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             region: "{{ region }}"
           register: result
 
@@ -33,16 +33,16 @@
             name: "{{ key_name }}"
             key_material: ss
             region: "{{ region }}"
-            aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
-            aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 
         - name: Create security group
           amazon.aws.ec2_group:
             name: "{{ sec_group }}"
             description: "sec group for app {{ id }}"
             region: "{{ region }}"
-            aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
-            aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             rules:
               - proto: tcp 
                 ports:
@@ -53,8 +53,8 @@
 
         - name: Provision instance(s)
           amazon.aws.ec2:
-            aws_access_key: "{{ AWS_ACCESS_KEY_ID }}"
-            aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             key_name: "{{ key_name }}"
             id: "{{ id }}"
             group_id: "{{ result_sec_group.group_id }}"
