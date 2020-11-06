@@ -5,6 +5,7 @@
   tasks:
     - name: get ami info
       amazon.aws.ec2_ami_info:
+        region: "{{ region }}"
         filters:
           name: "RHEL-8*"
       register: AMIs
