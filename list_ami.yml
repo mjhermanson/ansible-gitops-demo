@@ -1,0 +1,14 @@
+--- 
+- name: Get info about available AMIs
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: get ami info
+      amazon.aws.ec2.ami_info:
+        filters:
+          name: "RHEL-8*"
+      register: AMIs
+
+    - name: print out AMIs
+      debug:
+        var: AMIs
