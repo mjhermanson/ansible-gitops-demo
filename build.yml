@@ -1,9 +1,9 @@
 --- 
 - name: Build simple nodejs app
   hosts: tag_Environment_Testing
+  become: yes
   tasks:
     - name: Ensure nodejs and git are installed
-      become: yes
       package:
         name: 
           - git
