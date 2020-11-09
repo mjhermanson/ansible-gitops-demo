@@ -2,11 +2,12 @@
 - name: Deploy application
   hosts: tag_Environment_Testing
   become: yes
+  gather_facts: no
   tasks:
     - name: Copy app systemd file to /etc/systemd/system
       template:
         src: dcmetromap.service
-        path: /etc/systemd/system/dcmetromap.service
+        dest: /etc/systemd/system/dcmetromap.service
 
     - name: enable and start service
       systemd:
