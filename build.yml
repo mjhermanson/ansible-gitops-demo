@@ -19,6 +19,7 @@
       git:
         repo: https://github.com/corumj/simple-demo-app.git
         dest: ~/simple-demo-app
+        force: yes
 
     - name: install node dependencies
       community.general.npm:
