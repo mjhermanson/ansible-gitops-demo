@@ -3,9 +3,11 @@
   hosts: tag_Environment_Testing
   become: yes
   tasks:
-    - name: Ensure nodejs is installed
+    - name: Ensure nodejs and git are installed
       package:
-        name: nodejs
+        name: 
+          - git
+          - nodejs
         state: present
 
     - name: Create folder to checkout code 
