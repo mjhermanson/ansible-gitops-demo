@@ -33,12 +33,13 @@
             aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             key_name: "{{ key_name }}"
-            id: "{{ id }}"
-            image: "{{ image }}"
+            name: "{{ id }}"
+            security_group: default
+            image_id: "{{ image }}"
             instance_type: t2.micro
             region: "{{ region }}"
-            wait: true
-            count: 1
+            tags:
+              Environment: Testing
           
       tags: ['never', 'provision']
 
@@ -49,12 +50,8 @@
             state: absent
             aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            key_name: "{{ key_name }}"
-            id: "{{ id }}"
-            image: "{{ image }}"
-            instance_type: t2.micro
-            region: "{{ region }}"
-            wait: true
-            count: 1
+            filters:
+              tag-key: 
+                Environment: Testing
 
       tags: ['never', 'deprovision']
