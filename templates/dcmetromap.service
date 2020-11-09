@@ -4,10 +4,10 @@ Documentation=A simple cool map app
 After=network.target
 
 [Service]
-Environment=NODE_PORT=80
+Environment=PORT=80
 Type=simple
 User=ec2-user
-ExecStart=/usr/bin/node /home/ec2-user/simple-demo-app/app.js
+ExecStart=/usr/bin/node /root/simple-demo-app/bin/www
 Restart=on-failure
 
 [Install]
