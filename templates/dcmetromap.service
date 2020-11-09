@@ -1,6 +1,6 @@
 [Unit]
 Description=DC-Metro-Map.js - A cool map example
-Documentation={{ ansible_facts['fqdn'] }}
+Documentation=A simple cool map app
 After=network.target
 
 [Service]
