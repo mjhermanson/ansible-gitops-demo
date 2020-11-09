@@ -27,14 +27,15 @@
 
     - name: Provision EC2 Instances
       block:
-        - name: Upload public key to AWS 
+        - name: Create public key 
           amazon.aws.ec2_key:
             state: present
             name: "{{ key_name }}"
-            key_material: "{{ lookup('file', '/Users/jcorum/.ssh/ssh-key-ansible-sa.pub') }}"
+            # key_material: "{{ lookup('file', '/Users/jcorum/.ssh/ssh-key-ansible-sa.pub') }}"
             region: "{{ region }}"
             aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+          register: private_key
 
         - name: Create security group
           amazon.aws.ec2_group:
