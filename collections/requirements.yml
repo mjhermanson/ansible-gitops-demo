@@ -3,3 +3,4 @@ collections:
   - ansible.posix 
   - google.cloud
   - amazon.aws
+  - community.aws
