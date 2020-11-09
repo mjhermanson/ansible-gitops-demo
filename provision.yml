@@ -30,7 +30,7 @@
         - name: Provision instance(s)
           community.aws.ec2_instance:
             state: present
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+            aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             key_name: "{{ key_name }}"
             name: "{{ id }}"
@@ -48,7 +48,7 @@
         - name: Remove public key 
           community.aws.ec2_instance:
             state: absent
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+            aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             filters:
               tag-key: 
