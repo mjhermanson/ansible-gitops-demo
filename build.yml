@@ -1,6 +1,6 @@
 --- 
 - name: Build simple Go App
-  hosts: Tag_Environment_Testing
+  hosts: tag_Environment_Testing
   become: yes
   tasks:
     - name: Ensure nodejs is installed
