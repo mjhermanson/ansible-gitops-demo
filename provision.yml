@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
   vars:
-    key_name: demotest
+    key_name: ansibledemo
     image: ami-07128bd973a9c4e0b
     id: "demo-app"
     sec_group: "{{ id }}-sec"
@@ -32,7 +32,7 @@
             state: present
             aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            key_name: demotest
+            key_name: ansibledemo
             name: "{{ id }}"
             security_group: default
             image_id: "{{ image }}"
