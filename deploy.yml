@@ -1,6 +1,7 @@
 ---
 - name: Deploy application
   hosts: tag_Environment_Testing
+  become: yes
   tasks:
     - name: Copy app systemd file to /etc/systemd/system
       template:
