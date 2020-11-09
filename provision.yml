@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
   vars:
-    key_name: aws-demo
+    key_name: demotest
     image: ami-07128bd973a9c4e0b
     id: "demo-app"
     sec_group: "{{ id }}-sec"
@@ -45,7 +45,7 @@
 
     - name: Deprovision ec2 instance
       block:
-        - name: Remove public key 
+        - name: Remove EC2 Instance 
           community.aws.ec2_instance:
             state: absent
             region: "{{ region }}"
