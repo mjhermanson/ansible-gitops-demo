@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
   vars:
-    key_name: aws_key
+    key_name: aws-demo
     image: ami-07da8bff8ee284be8
     id: "demo-app"
     sec_group: "{{ id }}-sec"
@@ -27,40 +27,13 @@
 
     - name: Provision EC2 Instances
       block:
-        - name: Create public key 
-          amazon.aws.ec2_key:
-            state: present
-            name: "{{ key_name }}"
-            # key_material: "{{ lookup('file', '/Users/jcorum/.ssh/ssh-key-ansible-sa.pub') }}"
-            region: "{{ region }}"
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-          register: private_key
-
-        - name: Create security group
-          amazon.aws.ec2_group:
-            state: present
-            name: "{{ sec_group }}"
-            description: "sec group for app {{ id }}"
-            region: "{{ region }}"
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            rules:
-              - proto: tcp 
-                ports:
-                  - 22
-                cidr_ip: 0.0.0.0/0
-                rule_desc: allow all on ssh port 
-          register: result_sec_group
-
         - name: Provision instance(s)
-          amazon.aws.ec2:
+          community.aws.ec2_instance:
             state: present
             aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             key_name: "{{ key_name }}"
             id: "{{ id }}"
-            group_id: "{{ result_sec_group.group_id }}"
             image: "{{ image }}"
             instance_type: t2.micro
             region: "{{ region }}"
@@ -71,36 +44,17 @@
 
     - name: Deprovision ec2 instance
       block:
-        - name: Remove Ec2 Instance
-          amazon.aws.ec2:
+        - name: Remove public key 
+          community.aws.ec2_instance:
             state: absent
             aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
             key_name: "{{ key_name }}"
             id: "{{ id }}"
-            group_id: "{{ result_sec_group.group_id }}"
             image: "{{ image }}"
             instance_type: t2.micro
             region: "{{ region }}"
             wait: true
             count: 1
-
-        - name: Remove security group
-          amazon.aws.ec2_group:
-            state: absent
-            name: "{{ sec_group }}"
-            description: "sec group for app {{ id }}"
-            region: "{{ region }}"
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-
-        - name: Remove public key 
-          amazon.aws.ec2_key:
-            state: absent
-            name: "{{ key_name }}"
-            # key_material: "{{ lookup('file', '/Users/jcorum/.ssh/ssh-key-ansible-sa.pub') }}"
-            region: "{{ region }}"
-            aws_access_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-            aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 
       tags: ['never', 'deprovision']
