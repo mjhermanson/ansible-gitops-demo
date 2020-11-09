@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Environment=PORT=80
 Type=simple
-User=ec2-user
+User=root
 ExecStart=/usr/bin/node /root/simple-demo-app/bin/www
 Restart=on-failure
 
