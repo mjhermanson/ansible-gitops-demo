@@ -1,5 +1,5 @@
 --- 
-- name: Build simple Go App
+- name: Build simple nodejs app
   hosts: tag_Environment_Testing
   become: yes
   tasks:
@@ -20,6 +20,6 @@
         repo: https://github.com/corumj/simple-demo-app.git
         dest: ~/simple-demo-app
 
-    - name: install dependencies
+    - name: install node dependencies
       community.general.npm:
         path: ~/simple-demo-app
