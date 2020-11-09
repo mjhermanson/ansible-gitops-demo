@@ -4,3 +4,4 @@ collections:
   - google.cloud
   - amazon.aws
   - community.aws
+  - community.general

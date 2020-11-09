@@ -1,7 +1,23 @@
 --- 
 - name: Build simple Go App
-  hosts: build
+  hosts: Tag_Environment_Testing
+  become: yes
   tasks:
     - name: Ensure nodejs is installed
+      package:
+        name: nodejs
+        state: present
+
+    - name: Create folder to checkout code 
+      file:
+        path: ~/simple-demo-app
+        state: directory 
+
     - name: checkout code
+      git:
+        repo: https://github.com/corumj/simple-demo-app.git
+        dest: ~/simple-demo-app
+
     - name: install dependencies
+      community.general.npm:
+        path: ~/simple-demo-app
