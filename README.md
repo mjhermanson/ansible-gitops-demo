@@ -21,4 +21,4 @@ An existing security group in AWS with port 22 and 80 open
   - deploy
 Note: After the build and deploy steps you can add an 'on failure' branch to the workflow and deprovision the server if you want.
 5. On the workflow template, enable the webhook and select the GitHub type.  
-6. On the simple-web-app git repo (fork it so you can make changes to it yourself) setup a webhook according to githubs instructions and copy and paste the webhook URL for your Tower Webhook.  Be prepared, it will kick of the webhook instantly as a test, make sure in the response you get a `{"message": "Job queued."}` response and check in Tower to make sure the workflow is running.
+6. On the [simple-web-app](https://github.com/corumj/simple-demo-app) git repo (fork it so you can make changes to it yourself) setup a webhook according to Github's instructions and copy and paste the webhook URL for your Tower Webhook.  Be prepared, it will kick of the webhook instantly as a test, make sure in the response you get a `{"message": "Job queued."}` response and check in Tower to make sure the workflow is running.
