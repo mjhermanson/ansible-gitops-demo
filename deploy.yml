@@ -7,7 +7,7 @@
     - name: Copy app systemd file to /etc/systemd/system
       template:
         src: templates/dcmetromap.service
-        dest: /etc//systemd/system/dcmetromap.service
+        dest: /root/dcmetromap.service
         owner: root
         group: root
         force: yes
