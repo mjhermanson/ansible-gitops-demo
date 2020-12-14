@@ -7,7 +7,7 @@
     - name: Copy app systemd file to /etc/systemd/system
       template:
         src: dcmetromap.service
-        dest: /etc/systemd/system/dcmetromap.service
+        dest: /etc/systemd/system/
 
     - name: enable and start service
       systemd:
