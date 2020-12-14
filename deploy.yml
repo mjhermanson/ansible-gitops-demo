@@ -7,18 +7,18 @@
     - name: Copy app systemd file to /etc/systemd/system
       template:
         src: templates/dcmetromap.service
-        dest: /usr/lib/systemd/system/dcmetromap.service
+        dest: /etc//systemd/system/dcmetromap.service
         owner: root
         group: root
         force: yes
 
-    - name: enable and start service
-      systemd:
-        name: dcmetromap
-        daemon_reload: yes
-        enabled: yes
-        state: started
-
-    - name: Provide URL to test app
-      debug:
-        msg: "http://{{ ansible_host }}/"
+#    - name: enable and start service
+#      systemd:
+#        name: dcmetromap
+#        daemon_reload: yes
+#        enabled: yes
+#        state: started
+#
+#    - name: Provide URL to test app
+#      debug:
+#        msg: "http://{{ ansible_host }}/"
