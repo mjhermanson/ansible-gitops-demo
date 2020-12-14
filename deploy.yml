@@ -10,7 +10,7 @@
         dest: /usr/lib/systemd/system/dcmetromap.service
         owner: root
         group: root
-
+        force: yes
 
     - name: enable and start service
       systemd:
