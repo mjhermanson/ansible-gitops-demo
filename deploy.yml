@@ -7,17 +7,17 @@
     - name: Copy app systemd file to /etc/systemd/system
       copy:
         src: "srv/dcmetromap.service"
-        dest: "/tmp/dcmetromap.service"
+        dest: "/etc/systemd/system//dcmetromap.service"
         owner: root
         group: root
 
-#    - name: enable and start service
-#      systemd:
-#        name: dcmetromap
-#        daemon_reload: yes
-#        enabled: yes
-#        state: started
-#
-#    - name: Provide URL to test app
-#      debug:
-#        msg: "http://{{ ansible_host }}/"
+    - name: enable and start service
+      systemd:
+        name: dcmetromap
+        daemon_reload: yes
+        enabled: yes
+        state: started
+
+    - name: Provide URL to test app
+      debug:
+        msg: "http://{{ ansible_host }}/"
