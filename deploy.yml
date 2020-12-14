@@ -5,12 +5,11 @@
   gather_facts: yes
   tasks:
     - name: Copy app systemd file to /etc/systemd/system
-      template:
-        src: templates/dcmetromap.service
+      copy:
+        src: srv/dcmetromap.service
         dest: /root/dcmetromap.service
         owner: root
         group: root
-        force: yes
 
 #    - name: enable and start service
 #      systemd:
