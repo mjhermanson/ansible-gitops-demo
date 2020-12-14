@@ -5,11 +5,9 @@
   gather_facts: yes
   tasks:
     - name: Copy app systemd file to /etc/systemd/system
-      copy:
+      ansible.posix.synchronize:
         src: "srv/dcmetromap.service"
         dest: "/etc/systemd/system//dcmetromap.service"
-        owner: root
-        group: root
 
     - name: enable and start service
       systemd:
