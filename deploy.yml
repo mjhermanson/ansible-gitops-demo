@@ -6,8 +6,11 @@
   tasks:
     - name: Copy app systemd file to /etc/systemd/system
       template:
-        src: dcmetromap.service
-        dest: /etc/systemd/system/
+        src: templates/dcmetromap.service
+        dest: /etc/systemd/system/dcmetromap.service
+        owner: root
+        group: root
+
 
     - name: enable and start service
       systemd:
