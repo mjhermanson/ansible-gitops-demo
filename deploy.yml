@@ -7,7 +7,7 @@
     - name: Copy app systemd file to /etc/systemd/system
       copy:
         src: srv/dcmetromap.service
-        dest: /root/dcmetromap.service
+        dest: /tmp/dcmetromap.service
         owner: root
         group: root
 
