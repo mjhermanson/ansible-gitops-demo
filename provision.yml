@@ -5,7 +5,7 @@
   gather_facts: false
   vars:
     key_name: ansibledemo
-    image: ami-0967125d1d138d429
+    image: ami-096fda3c22c1c990a
     id: "demo-app"
     sec_group: "{{ id }}-sec"
   tasks:
