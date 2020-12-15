@@ -1,0 +1,34 @@
+---
+- name: Test application
+  hosts: tag_Environment_Testing
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Run NPM audit
+      command:
+        chdir: "/root/simple-demo-app/"
+        cmd: "npm audit"
+    
+    - name: restart dcmetromap
+      ansible.builtin.service:
+        name: dcmetromap
+        state: restarted
+
+
+    - name: Ensure  URI is reachable
+      uri:
+        url: "http://{{ ansible_host }}/"
+#      notify:
+#        - Create a JIRA issue
+
+  handlers:
+#  - name: Create a JIRA issue
+#    uri:
+#      url: https://your.jira.example.com/rest/api/2/issue/
+#      user: your_username
+#      password: your_pass
+#      method: POST
+#      body: "{{ lookup('file','issue.json') }}"
+#      force_basic_auth: yes
+#      status_code: 201
+#      body_format: json
