@@ -17,10 +17,15 @@
 
     - name: checkout code
       git:
-        repo: https://github.com/corumj/simple-demo-app.git
+        repo: https://github.com/mjhermanson/simple-demo-app.git
         dest: ~/simple-demo-app
         force: yes
 
     - name: install node dependencies
       community.general.npm:
         path: ~/simple-demo-app
+    
+    - name: Run NPM audit and force fix dependencies
+      command:
+        chdir: "/root/simple-demo-app/"
+        cmd: "npm audit fix --force"
