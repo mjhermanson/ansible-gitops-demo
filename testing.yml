@@ -4,22 +4,17 @@
   become: yes
   gather_facts: yes
   tasks:
-    - name: Run NPM audit
-      command:
-        chdir: "/root/simple-demo-app/"
-        cmd: "npm audit"
     
-    - name: restart dcmetromap
-      ansible.builtin.service:
-        name: dcmetromap
-        state: restarted
-
-
     - name: Ensure  URI is reachable
       uri:
         url: "http://{{ ansible_host }}/"
 #      notify:
 #        - Create a JIRA issue
+    - name: Run NPM audit
+      command:
+        chdir: "/root/simple-demo-app/"
+        cmd: "npm audit"
+    
 
   handlers:
 #  - name: Create a JIRA issue
