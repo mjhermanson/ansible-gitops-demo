@@ -25,3 +25,7 @@
     - name: Provide URL to test app
       debug:
         msg: "http://{{ ansible_host }}/"
+    
+    - name: Ensure  URI is reachable
+      uri:
+        url: "http://{{ ansible_host }}/"
