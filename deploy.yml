@@ -8,12 +8,12 @@
       ansible.posix.synchronize:
         src: "srv/dcmetromap.service"
         dest: "/tmp/dcmetromap.service"
-        owner: root
-	group: root
-        mode: 644
 
     - name: Install systemd unit file
       command: mv /tmp/dcmetromap.service /etc/systemd/system/dcmetromap.service
+    
+    - name: set perms
+      command: chown root:root /etc/systemd/system/dcmetromap.service
 
     - name: enable and start service
       systemd:
