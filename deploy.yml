@@ -7,7 +7,7 @@
     - name: Copy app systemd file to /etc/systemd/system
       ansible.posix.synchronize:
         src: "srv/dcmetromap.service"
-        dest: "/etc/systemd/system//dcmetromap.service"
+        dest: "/etc/systemd/system/dcmetromap.service"
 
     - name: enable and start service
       systemd:
