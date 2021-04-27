@@ -17,7 +17,7 @@
 
     - name: checkout code
       git:
-        repo: https://github.com/mjhermanson/simple-demo-app.git
+        repo: https://github.com/corumj/simple-demo-app
         dest: ~/simple-demo-app
         force: yes
 
